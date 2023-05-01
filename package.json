@@ -1,0 +1,16 @@
+{
+    "name": "ciphers-data.js",
+    "version": "1.0.0",
+    "description": "Encode/decode data with different ciphers.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js",
+        "devWatch": "nodemon index.js"
+    },
+    "author": "mariojey",
+    "license": "ISC",
+    "dependencies": {
+        "nodemon": "^2.0.22"
+    }
+}
