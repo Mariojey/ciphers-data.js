@@ -1,11 +1,13 @@
 class Caesar {
-    constructor(plainText, key, result) {
+
+    constructor(plainText, key) {
         this.plainText = plainText;
         this.key = key;
-        this.result = result;
     }
 
-    static encode(plainText, key) {
+    encode() {
+        const plainText = this.plainText;
+        const key = this.key
         let arrayOfCharCodes = []
         let codedArray = []
         for (let i = 0; i < plainText.length; i++) {
@@ -23,5 +25,4 @@ class Caesar {
 
     }
 }
-
 module.exports = Caesar
