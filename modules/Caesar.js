@@ -83,4 +83,8 @@ function findKey(plainText, encodedText) {
 
 }
 
-module.exports = { encode, decode, findKey }
+module.exports = {
+    encode: encode,
+    decode: decode,
+    findKey: findKey
+}
