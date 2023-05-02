@@ -1,6 +1,7 @@
 function encode(plainText, key) {
     let arrayOfCharCodes = []
     let codedArray = []
+    plainText = plainText.replaceAll(' ', '')
     for (let i = 0; i < plainText.length; i++) {
         arrayOfCharCodes.push(plainText.charCodeAt(i))
         let charAsciiCode = parseInt(arrayOfCharCodes[i]) + parseInt(key);
@@ -34,7 +35,7 @@ function decode(encodedText, key) {
 
 function findKey(plainText, encodedText) {
     const keys = []
-    plainText.toString();
+    plainText = plainText.toString().replaceAll(' ', '');
     encodedText.toString();
     if (plainText.length != encodedText.length) {
         if (plainText.length > encodedText.length) {
