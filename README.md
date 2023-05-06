@@ -10,6 +10,47 @@ Then in your node_modules folder appear new package
 ---
 # Using
 
+## Atbash
+
+* Encoding/Decoding with ```encode()``` and ```decode()```
+
+    ```js
+         const { Caesar } = require('ciphers-data.js')
+
+         const message = Atbash.encode('ABC')
+         const decodeMessage = Atbash.decode('ZYX')
+
+         console.log(message) //ZYX
+         console.log(decodeMessage) //ABC
+    ```
+
+## Autokey
+
+* It's polyalphabetic substitution cipher, basic on Vigenere cipher
+
+* Encoding with ```encoded()```
+
+    Both parameters of function will be uppercasing, key will be writing to the array whose length is equal pain text length. Rest elements in this array will be completing by characters of plain text.
+    ```js
+        const { Autokey } = require('ciphers-data.js')
+
+        const message = Autokey.encode('ola', 'dogandcat')
+
+        console.log(message) //RZG
+    ```
+* Decoding with ```decode()```
+
+    Key must be the same as in encoding.
+
+    ```js
+        const { Autokey } = require('ciphers-data.js')
+
+        const message = Autokey.decode('rzg', 'dogandcat')
+
+        console.log(message) //OLA
+
+    ```
+
 ## Playfair cipher
 
 * First of all, you must import package in your .js file:
@@ -107,6 +148,11 @@ But in this implementation program is using ASCII char codes from 40 to 126 to e
 
     ```
     Function returns keys of all swaping characters in string.
+
+
+
+
+
 
 ---
 
