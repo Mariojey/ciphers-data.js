@@ -1,6 +1,6 @@
 {
     "name": "ciphers-data.js",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "description": "Encode/decode data with different ciphers.",
     "main": "index.js",
     "scripts": {
