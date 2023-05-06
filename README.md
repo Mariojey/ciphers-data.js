@@ -15,7 +15,7 @@ Then in your node_modules folder appear new package
 * Encoding/Decoding with ```encode()``` and ```decode()```
 
     ```js
-         const { Caesar } = require('ciphers-data.js')
+         const { Atbash } = require('ciphers-data.js')
 
          const message = Atbash.encode('ABC')
          const decodeMessage = Atbash.decode('ZYX')
