@@ -1,17 +1,28 @@
 function generateMatrix() {
     let matrix = []
-    let asciiIndex = 78;
+    let asciiIndexFirst = 78;
+    let asciiIndexSecond = 65
     for (let i = 0; i < 13; i++) {
         let matrixElement = []
-        let asciiIndexActuall = asciiIndex
-        for (let i = 0; i < 26; i++) {
-            while (asciiIndexActuall > 90) {
-                asciiIndexActuall -= 26;
+        let asciiIndexFirstActuall = asciiIndexFirst;
+        let asciiIndexSecondActuall = asciiIndexSecond;
+
+        for (let i = 0; i < 13; i++) {
+            while (asciiIndexFirstActuall > 90) {
+                asciiIndexFirstActuall -= 13;
             }
-            matrixElement.push(String.fromCharCode(asciiIndexActuall))
-            asciiIndexActuall += 1;
+            matrixElement.push(String.fromCharCode(asciiIndexFirstActuall))
+            asciiIndexFirstActuall += 1;
         }
-        asciiIndex += 1
+        for (let i = 0; i < 13; i++) {
+            while (asciiIndexSecondActuall > 77) {
+                asciiIndexSecondActuall -= 13;
+            }
+            matrixElement.push(String.fromCharCode(asciiIndexSecondActuall))
+            asciiIndexSecondActuall += 1;
+        }
+        asciiIndexFirst += 1;
+        asciiIndexSecond += 1;
         matrix.push(matrixElement)
     }
     return matrix
@@ -48,12 +59,13 @@ function encode(plainText, key) {
         for (let i = 0; i < column.length; i++) {
             for (let j = 0; j < column[i].length; j++) {
                 if (column[i][j] == key.charAt(a)) {
+                    console.log(key.charAt(a));
                     let y = i
                     for (let char = 65; char <= 90; char++) {
-                        if (plainText.charAt(char - 65) == String.fromCharCode(char)) {
+                        if (plainText.charAt(a) == String.fromCharCode(char)) {
+                            console.log(String.fromCharCode(char));
                             let x = char - 65
                             result.push(matrix[y][x])
-                            console.log(x, y);
                         }
 
                     }
@@ -64,8 +76,10 @@ function encode(plainText, key) {
         }
 
     }
-    console.log(plainText);
+    console.log(matrix);
     console.log(key);
+    console.log(plainText);
+    result = result.toString().replaceAll(',', '')
     return result
 }
 
