@@ -11,7 +11,7 @@ function generateMatrix() {
             while (asciiIndexFirstActuall > 90) {
                 asciiIndexFirstActuall -= 13;
             }
-            console.log(`1 - ${asciiIndexFirstActuall}`);
+
             matrixElement.push(String.fromCharCode(asciiIndexFirstActuall))
             asciiIndexFirstActuall += 1;
         }
@@ -19,7 +19,7 @@ function generateMatrix() {
             while (asciiIndexSecondActuall > 77) {
                 asciiIndexSecondActuall -= 13;
             }
-            console.log(`2 - ${asciiIndexSecondActuall}`)
+
             matrixElement.push(String.fromCharCode(asciiIndexSecondActuall))
             asciiIndexSecondActuall += 1;
         }
@@ -61,11 +61,11 @@ function encode(plainText, key) {
         for (let i = 0; i < column.length; i++) {
             for (let j = 0; j < column[i].length; j++) {
                 if (column[i][j] == key.charAt(a)) {
-                    console.log(key.charAt(a));
+
                     let y = i
                     for (let char = 65; char <= 90; char++) {
                         if (plainText.charAt(a) == String.fromCharCode(char)) {
-                            console.log(String.fromCharCode(char));
+
                             let x = char - 65
                             result.push(matrix[y][x])
                         }
@@ -78,13 +78,50 @@ function encode(plainText, key) {
         }
 
     }
-    console.log(matrix);
-    console.log(key);
-    console.log(plainText);
+    result = result.toString().replaceAll(',', '')
+    return result
+}
+
+function decode(encodedText, key) {
+    encodedText = encodedText.toUpperCase().replace(/[^A-Z]/g, "")
+    key = key.toUpperCase().replace(/[^A-Z]/g, "")
+
+    if (key.length > encodedText.length) {
+        key = key.slice(0, encodedText.length - 1)
+    } else if (key.length < encodedText.length) {
+        let kLen = key.length
+        for (let i = key.length - 1; i < encodedText.length; i++) {
+            key = key + key.charAt(i - kLen)
+        }
+    }
+    const column = generateColumn()
+    let result = []
+    let matrix = generateMatrix()
+    for (let a = 0; a < key.length; a++) {
+
+        for (let i = 0; i < column.length; i++) {
+            for (let j = 0; j < column[i].length; j++) {
+                if (column[i][j] == key.charAt(a)) {
+
+                    for (let pos = 0; pos < matrix[i].length; pos++) {
+                        if (encodedText.charAt(a) == matrix[i][pos]) {
+                            let index = pos + 65
+                            result.push(String.fromCharCode(index))
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+
+    }
     result = result.toString().replaceAll(',', '')
     return result
 }
 
 module.exports = {
-    encode: encode
+    encode: encode,
+    decode: decode
 }

@@ -51,6 +51,36 @@ Then in your node_modules folder appear new package
 
     ```
 
+## Porta
+
+* This is a polyalphabetic substitution cipher basically uses 13 pair of letters saved in special matrix
+
+* Encoding with ``` encode()```
+
+    ```
+        Porta.encode(<plain text>, <key>)
+    ```
+
+    **Example:**
+    ```js
+        const {Porta} = require('ciphers-data.js')
+
+        const message = Porta.encode('roses are red', 'GARDEN')
+        console.log(message) //BBKSDTBRJSS
+    ```
+* Decoding with ``` decode()```
+
+    ```
+        Porta.decode(<encoded text>, <key>)
+    ```
+
+     **Example:**
+    ```js
+        const {Porta} = require('ciphers-data.js')
+
+        const message = Porta.decode('BBKSDTBRJSS', 'GARDEN')
+        console.log(message) //ROSESARERED
+    ```
 ## Playfair cipher
 
 * First of all, you must import package in your .js file:
@@ -95,6 +125,7 @@ Then in your node_modules folder appear new package
 
     ```
     As you can see algorith added ```X``` on the end of string, because when length of your plain text isn't even it's necessary to encoding.
+
 
 ## Caesar cipher
 
