@@ -1,7 +1,7 @@
 function generateMatrix() {
     let matrix = []
     let asciiIndexFirst = 78;
-    let asciiIndexSecond = 65
+    let asciiIndexSecond = 78
     for (let i = 0; i < 13; i++) {
         let matrixElement = []
         let asciiIndexFirstActuall = asciiIndexFirst;
@@ -11,6 +11,7 @@ function generateMatrix() {
             while (asciiIndexFirstActuall > 90) {
                 asciiIndexFirstActuall -= 13;
             }
+            console.log(`1 - ${asciiIndexFirstActuall}`);
             matrixElement.push(String.fromCharCode(asciiIndexFirstActuall))
             asciiIndexFirstActuall += 1;
         }
@@ -18,11 +19,12 @@ function generateMatrix() {
             while (asciiIndexSecondActuall > 77) {
                 asciiIndexSecondActuall -= 13;
             }
+            console.log(`2 - ${asciiIndexSecondActuall}`)
             matrixElement.push(String.fromCharCode(asciiIndexSecondActuall))
             asciiIndexSecondActuall += 1;
         }
         asciiIndexFirst += 1;
-        asciiIndexSecond += 1;
+        asciiIndexSecond -= 1;
         matrix.push(matrixElement)
     }
     return matrix
