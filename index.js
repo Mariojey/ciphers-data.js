@@ -3,11 +3,13 @@ const Playfair = require('./modules/Playfair.js')
 const Atbash = require('./modules/Atbash.js')
 const Autokey = require('./modules/Autokey.js')
 const Porta = require('./modules/Porta.js')
+const Solitaire = require('./modules/Solitaire.js')
 
 module.exports = {
     Caesar: Caesar,
     Playfair: Playfair,
     Atbash: Atbash,
     Autokey: Autokey,
-    Porta: Porta
+    Porta: Porta,
+    Solitaire: Solitaire
 };
