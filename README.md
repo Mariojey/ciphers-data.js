@@ -180,6 +180,29 @@ But in this implementation program is using ASCII char codes from 40 to 126 to e
     ```
     Function returns keys of all swaping characters in string.
 
+## Solitaire
+
+Original destiny of this cipher was non-computer cryptography but as decoding information by pencil and paper could be non fast, there's a function for encode and decode with key. Key must have the same length such as plain text.
+
+* Encoding with ```encode()```
+    
+    ```js
+         const { Solitaire } = require('ciphers-data.js')
+
+         const message = Solitaire.encode('ABCDE',   'FGHIJ')
+                                        //^plainText, key^//
+
+         console.log(message) //GIKMO
+    ```
+* Decoding with ```decode()```
+    ```js
+         const { Solitaire } = require('ciphers-data.js')
+
+         const message = Solitaire.decode('GIKMO',   'FGHIJ')
+                                        //^plainText, key^//
+
+         console.log(message) //ABCDE
+    ```
 
 
 
