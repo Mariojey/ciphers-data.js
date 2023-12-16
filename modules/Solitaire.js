@@ -67,6 +67,34 @@ function encode(plainText, key) {
     return result
 }
 
+function decode(encoded, key) {
+    encoded = encoded.replace(/\s/g, '')
+    key = key.replace(/\s/g, '')
+    encoded = encoded.toUpperCase().replace(/[^A-Z]/g)
+    key = key.toUpperCase().replace(/[^A-Z]/g)
+    let encodedTextMatrix = []
+    let keyMatrix = []
+    encodedTextMatrix = generateMatrix(encoded)
+    keyMatrix = generateMatrix(key)
+    encodedAsNumbers = changeToAscii(encodedTextMatrix)
+    keyAsNumbers = changeToAscii(keyMatrix)
+    let subtractedNumbers = []
+    for (let i = 0; i < encodedAsNumbers.length; i++) {
+        let subtractedQuart = []
+        for (let j = 0; j < encodedAsNumbers[i].length; j++) {
+            if (encodedAsNumbers[i][j] - keyAsNumbers[i][j] < 0) {
+                subtractedQuart.push((encodedAsNumbers[i][j] - keyAsNumbers[i][j]) + 26)
+            } else {
+                subtractedQuart.push((encodedAsNumbers[i][j] - keyAsNumbers[i][j]))
+            }
+        }
+        subtractedNumbers.push(subtractedQuart)
+    }
+    result = changeToString(subtractedNumbers)
+    return result
+}
+
 module.exports = {
-    encode: encode
+    encode: encode,
+    decode: decode
 }
