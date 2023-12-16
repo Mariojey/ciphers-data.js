@@ -28,7 +28,18 @@ function changeToAscii(array) {
     return privateMatrix
 }
 
+function changeToString(array) {
+    let privateString = ''
+    for (let i = 0; i < array.length; i++) {
+        let words = ''
+        for (let j = 0; j < array[i].length; j++) {}
+
+    }
+}
+
 function encode(plainText, key) {
+    plainText = plainText.replace(/\s/g, '')
+    key = key.replace(/\s/g, '')
     plainText = plainText.toUpperCase().replace(/[^A-Z]/g)
     key = key.toUpperCase().replace(/[^A-Z]/g)
     let plainTextMatrix = []
