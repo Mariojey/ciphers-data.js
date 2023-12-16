@@ -32,9 +32,12 @@ function changeToString(array) {
     let privateString = ''
     for (let i = 0; i < array.length; i++) {
         let words = ''
-        for (let j = 0; j < array[i].length; j++) {}
-
+        for (let j = 0; j < array[i].length; j++) {
+            words += String.fromCharCode(array[i][j] + 64)
+        }
+        privateString += words;
     }
+    return privateString
 }
 
 function encode(plainText, key) {
@@ -60,7 +63,8 @@ function encode(plainText, key) {
         }
         summedNumbers.push(summedQuart)
     }
-    return summedNumbers
+    result = changeToString(summedNumbers)
+    return result
 }
 
 module.exports = {
